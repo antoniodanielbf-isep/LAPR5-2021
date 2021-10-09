@@ -1,0 +1,94 @@
+@startuml
+skinparam handwritten true
+skinparam monochrome true
+skinparam packageStyle rect
+skinparam defaultFontName FG Virgil
+skinparam shadowing false
+'---------------'
+
+
+package RedeSocial <<aggregate>>{
+
+    entity RedeSocial <<agregate root>>{}
+
+}
+
+
+'---------------'
+
+
+package Jogador <<aggregate>>{
+
+    entity Jogador <<aggregate root>>{}
+
+
+}
+
+
+'---------------'
+package Jogo <<aggregate>>{
+
+
+    entity Jogo <<<<aggregate root>>>>{}
+
+    entity Missao <<entity>>{}
+
+    class NivelDeDificuldade <<value object>>{}
+
+
+}
+
+'---------------'
+package LeaderBoard <<aggregate>>{
+
+    entity LeaderBoard <<aggregate root>>{}
+
+
+}
+
+
+
+
+'---------------'
+
+package Perfil <<aggregate>>{
+
+    entity Perfil <<aggregate root>>{}
+
+
+}
+
+
+'---------------'
+
+
+
+
+
+
+'---------------'
+
+
+
+
+
+
+'---------------'
+
+
+
+
+
+
+'---------------'
+
+
+
+
+
+
+
+'---------------'
+
+
+@enduml
