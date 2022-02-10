@@ -1,0 +1,93 @@
+<!--lista de utilizadores objetivo, após clicar no botão para ver o intermediário
+é pedido pra colocar os dados no formulário, e só ao clicar em pedir introdução é que
+realmente pede introdução ao utilizador objetivo X, passando pelo intermediário Y,
+com mensagem de texto para Y
+ng if para q, ao clicar no botão, apareça o formulário de pedido de introdução-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="escolher-utilizadores-objetivo.component.css">
+</head>
+
+<body>
+<div class="content">
+  <div class="title" id='title'>
+    Sugestões de Utilizadores objetivo/Sugestões de Grupo
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-xs-12">
+        <ol class="list-group">
+          <li class="list-group-item" *ngFor="let sugestaoAmizade of listaUtilizadoresSugeridos">
+            Talvez conheça: <b>{{sugestaoAmizade.nomeUtilizador}}</b> <br>
+            Email: <b>{{sugestaoAmizade.email}}</b>
+
+            <form [formGroup]="pedidoLigacaoForm">
+
+              <mat-form-field appearance="fill">
+                <mat-label>Introduza a forca de ligacao</mat-label>
+                <input type="text" matInput formControlName="forca" required>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Introduza as tags de pedido</mat-label>
+                <input type="text" matInput formControlName="tagsL" required>
+              </mat-form-field>
+
+              <div class="submitBtn">
+                <button type="button" class="mat-button" (click)="submeterFormPesquisa(sugestaoAmizade.email)"><b>Pedir
+                  Ligação</b></button>
+              </div>
+            </form>
+
+          </li>
+        </ol>
+      </div>
+
+
+      <h2>Sugestões de Grupos</h2>
+      <form [formGroup]="sugerirGruposForm">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Introduza as tags</mat-label>
+          <input type="text" matInput formControlName="tagsGrupos" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nr mínimo de utilizadores</mat-label>
+          <input type="text" matInput formControlName="nrMinUtilizadores" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nr de tags em comum</mat-label>
+          <input type="text" matInput formControlName="nrTagsComuns" required>
+        </mat-form-field>
+
+        <div class="submitBtn">
+          <button type="button" class="mat-button" (click)="submeterFormSugerirGrupos()"><b>Pedir Sugestão de Grupos</b>
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="sugerirGrupos">
+        <div class="col-xs-12">
+          <ol class="list-group">
+            <li class="list-group-item" *ngFor="let sugestaoGrupo of sugestoesGrupos.listaUsers;index as i">
+              Talvez conheça {{i + 1}}:<b>{{sugestaoGrupo}}</b> <br>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+
+

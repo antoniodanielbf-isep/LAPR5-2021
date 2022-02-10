@@ -1,0 +1,44 @@
+<div class="container">
+  <h2><b>Create Pedido Introducao</b></h2>
+  <hr>
+  <form [formGroup]="pedidoIntroForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Id Pedido</mat-label>
+      <input type="text" matInput formControlName="id" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Escreva uma descricao do pedido</mat-label>
+      <input type="text" matInput formControlName="descricao" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Coloque o seu email</mat-label>
+      <input type="text" matInput formControlName="origem" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Coloque o email do utilizador a quem deseja pedir introducao</mat-label>
+      <input type="text" matInput formControlName="intermedio" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Coloque o email do utilizador destino</mat-label>
+      <input type="text" matInput formControlName="destino" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Introduza a forca de ligacao</mat-label>
+      <input type="text" matInput formControlName="forca" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Introduza as tags de pedido</mat-label>
+      <input type="text" matInput formControlName="listTags" required>
+    </mat-form-field>
+
+    <button type="button" class="registerbtn" (click)="submitForm()"><b>CREATE
+      DIRECT REQUEST</b></button>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <h2><b>List of Users</b></h2>
+  <hr>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let user of listUsers">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ user.email }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ user.nomeUtilizador }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p><b>Cidade Pais: </b> {{ user.cidadePaisResidencia }} <b> | Data de Nascimento: </b> {{ user.dataDeNascimentoUtilizador }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

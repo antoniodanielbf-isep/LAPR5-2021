@@ -1,0 +1,51 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Criar Post</title>
+  <link rel="stylesheet" href="criar-post.component.css">
+</head>
+
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    Criar Post
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="voltarInicio()">Página Inicial</button>
+  </div>
+
+  <div class="wrapper">
+
+    <form [formGroup]="postForm">
+
+      <div class="todos">
+
+        <div class="elem1">
+          <h3>Escreva Aqui o Seu Post</h3>
+          <mat-form-field appearance="fill" id="textoPost">
+            <mat-label>Introduzir Post</mat-label>
+            <input id="box" type="text" matInput formControlName="texto" required>
+          </mat-form-field>
+        </div>
+
+        <div class="elem2">
+          <h3>Escreva Aqui as Tags</h3>
+          <mat-form-field appearance="fill" id="tagsPost">
+            <mat-label>Introduzir Tags</mat-label>
+            <input type="text" matInput formControlName="tags">
+          </mat-form-field>
+        </div>
+
+        <div class="button">
+          <button type="button" class="registerbtn" id="botaoCriarPost" (click)="criarPost()"><b>FAZER POST</b></button>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+
+</div>
+</body>

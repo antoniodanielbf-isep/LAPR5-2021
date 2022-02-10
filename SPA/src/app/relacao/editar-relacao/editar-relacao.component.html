@@ -1,0 +1,63 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Relacao</title>
+  <link rel="stylesheet" href="editar-relacao.component.css">
+</head>
+
+<body>
+<div class="content">
+  <div class="title" id='title'>
+    Editar Relação
+  </div>
+
+  <div class = "btn btn-secondary">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+
+
+    <div class="header">
+      <h2>As minhas Relações</h2>
+    </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <ol class="list-group">
+            <li class="list-group-item" *ngFor="let relacao of listaRelacoes">
+              <h2>Relação Info: </h2>
+              <h4>Id Relação: </h4>
+              <input [(ngModel)]="relacao.relacaoId" readonly>
+              <h4>Força de Relação: </h4>
+              <input [(ngModel)]=relacao.forcaLigacaoOrigDest readonly>
+              <h4>Tags de Relação: </h4>
+              <input [(ngModel)]=relacao.tagsRelacaoAB readonly>
+              <h4>Utilizador 1: </h4>
+              <input [(ngModel)]=relacao.utilizadorOrigem readonly>
+              <h4>Utilizador 2: </h4>
+              <input [(ngModel)]=relacao.utilizadorDestino readonly>
+              <br>
+
+              <form [formGroup]="editarRelacaoForm">
+                <div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Introduzir Força</mat-label>
+                    <input type="text" matInput formControlName="forcaLigacaoOrigDest" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Introduzir Tags</mat-label>
+                    <input type="text" matInput formControlName="tagsRelacaoAB" required>
+                  </mat-form-field>
+                </div>
+              </form>
+
+              <button class="btn btn-success" (click)="submitForm(relacao.relacaoId)">
+                Editar Relação
+              </button>&nbsp;
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+
+</body>

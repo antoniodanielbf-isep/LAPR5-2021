@@ -1,0 +1,64 @@
+<!-- lista com os pedidos de introdução pendentes dos quais eu sou intermediário e, em cada posição temos para além
+ do pedido pendente um botão aceitar e um botão rejeitar que basicamente modificam o pedido em si
+ e retira-o da lista carregada (isto para n fazer mais https requests para além dos necessários
+ e tbm pq mesmo mudando o estado ele não irá ser mais pendente)-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="aprovar-desaprovar-pedido-introducao.component.css">
+</head>
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    Os meus pedidos de introdução para aprovar/rejeitar
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+
+  <div class="wrapper">
+    <div class="titulo">
+      <h2 style="font-weight: bold">Pedidos de Introdução Pendentes</h2>
+    </div>
+    <div class="caixa">
+      <div class="row">
+        <div class="col-xs-12">
+          <ol class="list-group">
+            <li class="list-group-item" *ngFor="let pedidoIntroducaoPendente of listaPedidosIntroducaoPendentes">
+              Destinatário:<b> {{pedidoIntroducaoPendente.emailDestino}}</b> <br>
+              A pedido de <b>{{pedidoIntroducaoPendente.emailOrigem}}</b>:<br>{{pedidoIntroducaoPendente.descricao}}<br>
+              <button class="btn btn-success" (click)="colocarTextoPedidoIntroducao()">Aceitar</button>&nbsp;
+              <button class="btn-outline-danger" (click)="rejeitarPedidoIntroducao(pedidoIntroducaoPendente)">Rejeitar
+              </button>&nbsp;
+
+              <div *ngIf="pedidoIntroducaoAceite">
+
+                <form [formGroup]="pedidoIntroAceiteForm">
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Digite a mensagem de texto para o utilizador destino:</mat-label>
+                    <input type="text" matInput formControlName="descricao" required>
+                  </mat-form-field>
+
+                  <button class="btn btn-success" (click)="aceitarPedidoIntroducao(pedidoIntroducaoPendente)">Aceitar
+                    com
+                    mensagem
+                  </button>&nbsp;
+
+                </form>
+
+              </div>
+
+            </li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

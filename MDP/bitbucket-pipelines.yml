@@ -1,0 +1,22 @@
+image: node:14.9.0
+
+pipelines:
+  default:
+        - step:
+            name: Build and Test
+            caches:
+              - node
+            script:
+              - npm install nodemon --save
+              - npm run-script build
+        - step:
+            name: Deploy to Heroku
+            script:
+              - git archive --format=tar.gz master -o mdp.tar.gz
+              - pipe: atlassian/heroku-deploy:1.2.1
+                variables:
+                  HEROKU_API_KEY: $HEROKU_API_KEY
+                  HEROKU_APP_NAME: $HEROKU_APP_NAME
+                  ZIP_FILE: "mdp.tar.gz"
+                  WAIT: "true"
+

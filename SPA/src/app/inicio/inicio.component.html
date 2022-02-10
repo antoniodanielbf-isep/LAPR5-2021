@@ -1,0 +1,110 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="inicio.component.css">
+</head>
+
+<body>
+<header>
+  <div class="content">
+    <nav>
+      <ul>
+        <li>
+          <a class="nav-item">Utilizador</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="editarPerfil()">Editar Perfil</a>
+              <a class="sub-item" (click)="pesquisarUser()">Pesquisar</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item">LeaderBoards</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="consultarLeaderbords()">Consultar Leaderboards</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item">Relação</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="editarRelacao()">Editar relação</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a class="nav-item">Introdução</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="acrgIntro()">Aceitar/Rejeitar</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item">Pedido Introdução</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="criarIntro()">Fazer Pedido</a>
+              <a class="sub-item" (click)="apDesPedIntro()">Aprovar/Desaprovar</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item">Pedido Ligação</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="escolherUtilizadoresObjetivoSugeridos()">Ligar a Utilizadores Objetivo
+                Sugeridos/Sugestões de Amizade/Sugestões de Grupo</a>
+              <a class="sub-item" (click)="verPedidosLigacaoPendentes()">Ver Pedidos de Ligação Pendentes </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item">Amigos</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="consultarAmigosComuns()">Consultar Grafo Amigos em Comum</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item">Tags Cloud</a>
+          <ul>
+            <li>
+              <a class="sub-item" (click)="verTagsCloud()">Consultar Tags Cloud</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-item" id="botaoPost">Post</a>
+          <ul>
+            <li>
+              <a class="sub-item" id="botaoCriarPost" (click)="criarPost()">Fazer Post</a>
+              <a class="sub-item" id="botaoComentarPost" (click)="verFeed()">Ver Feed</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="logout">
+        <button class="logout-button" (click)="logout()"> Logout</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="headers">
+        <h2>Socializa!</h2>
+        <h3>Desenvolve a tua Network!</h3>
+
+        <button type="button" (click)="visualizarRede()">Visualizar perspetiva Gráfica</button>
+        <button type="button" (click)="visualizarTabelas()">Visualizar perspetiva de Rede Social</button>
+
+      </div>
+
+    </div>
+  </div>
+
+</header>
+</body>

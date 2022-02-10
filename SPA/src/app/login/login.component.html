@@ -1,0 +1,26 @@
+<body>
+<div class="container">
+  <h2><b>Login</b></h2>
+  <hr>
+  <form [formGroup]="loginForm">
+    <mat-form-field appearance="fill" id="emailLogin" (keydown.enter)="$event.preventDefault()">
+      <mat-label>E-mail</mat-label>
+      <input type="text" matInput formControlName="email" required autocomplete="new-password">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" id="passwordLogin" (keydown.enter)="$event.preventDefault()">
+      <mat-label>Password</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" required autocomplete="new-password">
+      <button tabIndex="-1" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  <button type="button" class="submitbtn" id="botaoLogin" (click)="logar()"><b>LOGIN</b></button>
+
+  <p style="color:blueviolet">Não possui conta?</p>
+
+  <button type="button" class="submitbtn" (click)="redirectParaRegisto()"><b>REGISTAR</b></button>
+</div>
+</body>

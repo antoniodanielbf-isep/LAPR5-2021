@@ -1,0 +1,318 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Rede Social</title>
+  <link rel="stylesheet" href="rede-social-perspetiva.component.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    Perspetiva Rede Social
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+
+  <form [formGroup]="editarRede">
+    <div class="info_total">
+      <div class="escolher-niveis">
+        <div class="info_title">
+          <h4>Nivel de Perspetiva</h4>
+        </div>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="nivelEditado">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let nivel of niveis" [value]="nivel.number">
+              {{nivel.nivel}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="topper_resto">
+        <div class="destino">
+          <mat-form-field appearance="outline">
+            <mat-label>Utilizador Destino</mat-label>
+            <input type="text" matInput formControlName="utilizadorDestino" required>
+          </mat-form-field>
+        </div>
+
+        <div class="valorMaximo">
+          <mat-form-field appearance="outline">
+            <mat-label>Valor Máximo</mat-label>
+            <input type="text" matInput formControlName="valorMaximo" required>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="right_emocional">
+      <div class="form-group">
+        <input id="checkbox" type=checkbox (click)="toggle()">
+        <label for="checkbox">Ativar Estados Emocionais</label>
+      </div>-->
+
+    <!--<div *ngIf="checkbox">
+      <div class="data">
+        <h4>Pesquisa de Caminho com Estados Emocionais</h4>
+
+        <div *ngIf="caminhoSeguroEmocional">
+          <div class="valorMinimo">
+            <div class="box">
+              <form></form>
+              <mat-form-field appearance="outline">
+                <mat-label>Valor Mínimo</mat-label>
+                <input type="text" matInput formControlName="valorMinimo" required>
+              </mat-form-field>
+            </div>
+            <button type="button" class="btn btn-success" (click)="consultarCaminhoMaisSeguroEmocional()"><b>Consultar
+              Caminho Mais
+              Seguro c/Emocional!</b></button>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <button type="button" class="consultar-caminho" (click)="consultarCaminhoMaisCurtoEmocional()"><b>Consultar
+            Caminho Mais
+            Curto c/Emocional!</b></button>
+        </div>
+
+        <div class="bottom">
+          <button type="button" class="consultar-caminho" (click)="consultarCaminhoMaisForteEmocional()"><b>Consultar
+            Caminho Mais
+            Forte c/Emocional!</b></button>
+        </div>
+        <div *ngIf="!caminhoSeguroEmocional">
+          <div class="bottom">
+            <button type="button" class="consultar-caminho" (click)="verCaminhoMaisCurtoEmocional()"><b>Colocar valor
+              mínimo para ver caminho mais curto c/Emocional!</b></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>-->
+    <div class="valorMinimoDiv">
+      <div *ngIf="caminhoSeguro">
+        <mat-form-field appearance="outline">
+          <mat-label>Valor Mínimo</mat-label>
+          <input type="text" matInput formControlName="valorMinimo" required>
+        </mat-form-field>
+        <button type="button" class="btn btn-success" (click)="consultarCaminhoMaisSeguro()"><b>Consultar Caminho Mais
+          Seguro!</b></button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div class="left">
+    <div *ngIf="!caminhoSeguro">
+      <div class="bottom">
+        <button type="button" class="consultar-caminho" (click)="mostrarFormValorMinimo()"><b>Colocar Valor Mínimo para
+          Caminho mais seguro!</b></button>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="alterarNivel" (click)="consultarRede()"><b>Consultar Rede!</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="consultarCaminhoMaisCurto()"><b>Consultar Caminho Mais
+        Curto!</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="consultarCaminhoMaisForte()"><b>Consultar Caminho Mais
+        Forte!</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="pesquisarForcaLigacao()"><b>Pesquisar por forças da
+        ligação</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="pesquisarForcaLigacaoRelacao()"><b>Pesquisar por forças
+        da
+        ligação e relação</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultarDimensaoDaRede" (click)="consultarFortalezaDaRede()"><b>Consultar Fortaleza
+        da
+        Rede!</b></button>
+    </div>
+
+  </div>
+
+  <!--imprimir os caminhos-->
+  <div class="imprimir_caminhos">
+    <div *ngIf="caminhoMaisCurtoEncontrado">
+      <b> O caminho mais curto entre tu e {{opcaoEscolhida.utilizadorDestino}}: </b><br>
+      {{caminhoEncontrado.caminho}}
+      <br>
+      <b> O número mínimo de ligações neste caminho: </b><br>
+      {{caminhoEncontrado.valor}}
+    </div>
+
+    <div *ngIf="caminhoMaisForteEncontrado">
+      <b> O caminho mais forte entre tu e {{opcaoEscolhida.utilizadorDestino}}: </b><br>
+      {{caminhoEncontrado.caminho}}
+      <br>
+      <b> O valor total das ligações: </b><br>
+      {{caminhoEncontrado.valor}}
+    </div>
+
+    <div *ngIf="caminhoMaisSeguroEncontrado">
+      <b> O caminho mais seguro entre tu e {{opcaoEscolhida.utilizadorDestino}}: </b><br>
+      {{caminhoEncontrado.caminho}}
+      <br>
+      <b> O valor total das ligações: </b><br>
+      {{caminhoEncontrado.valor}}
+    </div>
+
+    <div *ngIf="caminhoComForcaEncontrado">
+      <b> Entre tu e {{opcaoEscolhida.utilizadorDestino}}, o caminho de força com um máximo
+        de {{valorMaximoIntroduzido}}
+        utilizadores é: </b>
+      {{forcaEncontrada.caminho}}
+      <h5>Com Forças de Ligação de Ti para cada um deles correspondente:</h5>
+      {{forcaEncontrada.forcasLigacaoOrigemDestino}}
+      <br>
+      <h5>Com Forças de Ligação de cada um deles para ti correspondente:</h5>
+      {{forcaEncontrada.forcasLigacaoDestinoOrigem}}
+      <h5>Somatório das Forças de Ligação:</h5>
+      {{forcaEncontrada.valor}}
+      <br>
+    </div>
+
+    <div *ngIf="caminhoComForcaRelEncontrado">
+      <b> Entre tu e {{opcaoEscolhida.utilizadorDestino}}, o caminho de força com um máximo
+        de {{valorMaximoIntroduzido}}
+        utilizadores é: </b>
+      {{forcaRelacaoEncontrada.caminho}}
+      <h5>Com Forças de Ligação de Ti para cada um deles correspondente:</h5>
+      {{forcaRelacaoEncontrada.forcasLigacaoOrigemDestino}}
+      <br>
+      <h5>Com Forças de Ligação de cada um deles para ti correspondente:</h5>
+      {{forcaRelacaoEncontrada.forcasLigacaoDestinoOrigem}}
+      <h5>Somatório das Forças de Ligação:</h5>
+      {{forcaRelacaoEncontrada.valor}}
+      <br>
+      <h5>Com Forças de Relação de Ti para cada um deles correspondente:</h5>
+      {{forcaRelacaoEncontrada.forcasRelacaoDestinoOrigem}}
+      <br>
+      <h5>Com Forças de Relação de cada um deles para ti correspondente:</h5>
+      {{forcaRelacaoEncontrada.forcasRelacaoOrigemDestino}}
+      <br>
+    </div>
+
+    <div *ngIf="caminhoMaisCurtoEmocionalEncontrado">
+      <b> O caminho mais curto emocional entre tu e {{opcaoEscolhida.utilizadorDestino}}: </b><br>
+      {{caminhoEncontrado.caminho}}
+      <br>
+      <b> O número mínimo de ligações neste caminho: </b><br>
+      {{caminhoEncontrado.valor}}
+    </div>
+
+    <div *ngIf="caminhoMaisForteEmocionalEncontrado">
+      <b> O caminho mais forte emocional entre tu e {{opcaoEscolhida.utilizadorDestino}}: </b><br>
+      {{caminhoEncontrado.caminho}}
+      <br>
+      <b> O valor total das ligações: </b><br>
+      {{caminhoEncontrado.valor}}
+    </div>
+
+    <div *ngIf="caminhoMaisSeguroEmocionalEncontrado">
+      <b> O caminho mais seguro emocional entre tu e {{opcaoEscolhida.utilizadorDestino}}: </b><br>
+      {{caminhoEncontrado.caminho}}
+      <br>
+      <b> O valor total das ligações: </b><br>
+      {{caminhoEncontrado.valor}}
+    </div>
+  </div>
+
+  <div *ngIf="fortalezaRedeCalculada">
+    <b> Total de fortaleza de rede do teu 1º nível: </b><br>
+    {{fortalezaRede}}
+  </div>
+
+
+  <form [formGroup]="tamanhoRedeForm">
+    <div class="right">
+      <div class="escolher-niveis">
+        <h4>Nivel de Tamanho de Rede</h4>
+
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="nivelEditado" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let nivel of niveis" [value]="nivel.number">
+              {{nivel.nivel}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="bottom">
+        <button type="button" class="consultarTamanhoDaRede" (click)="consultarTamanhoDaRede()"><b>Consultar tamanho da
+          Rede!</b></button>
+      </div>
+
+      <div class="total_users">
+        <b>Total utilizadores da rede: {{totalUtilizadoresSistema.tamanhoRedeSocialCompleto}}</b>
+      </div>
+
+      <div *ngIf="tamanhoRedeCalculado">
+        <b> Tamanho da Rede: </b>{{tamanhoDaRede.tamanho}}
+        <br>
+        <b>Lista de Utilizadores: </b><br>
+        <div *ngFor="let user of tamanhoDaRede.users">
+          <br>  {{user}}
+        </div>
+      </div>
+
+
+      </div>
+  </form>
+</div>
+
+
+  <!--renderizar o grafo-->
+  <div *ngIf="redeAtiva" class="imprimir_caminhos">
+
+
+    <div *ngFor="let relacoesDoNivel of redeSocialPerspetiva;index as i">
+
+      <div *ngIf=" i+2 <= this.editarRede.value.nivelEditado">
+        <h2><b>Nível: {{i + 2}}</b></h2><br> <!-- somar 1 ao indice pra n comecar a 0-->
+      </div>
+
+      <div *ngFor="let relacao of relacoesDoNivel">
+        <div *ngIf=" i+2 <= this.editarRede.value.nivelEditado">
+
+
+          <h5>Utilizador 1: {{relacao.utilizadorOrigem }}</h5>
+          <h5>Força:  {{relacao.forcaLigacaoOrigDest}}</h5>
+          <h5>Tags Utilizador 1 -> Utilizador2: </h5>{{relacao.tagsRelacaoAB}}
+          <h5>Utilizador 2: {{relacao.utilizadorDestino }}</h5>
+          <h5>Tags Utilizador 2 -> Utilizador1: </h5>{{relacao.tagsRelacaoBA}}
+          <h5>Força:  {{relacao.forcaLigacaoDestOrig}}</h5>
+
+          <br>----------//-----------
+          <div>
+            <br>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</body>
+
+

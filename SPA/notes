@@ -1,0 +1,5 @@
+
+echo "##### EXPANDIR MEMÓRIA PARA A APLICAÇÃO #####"
+
+   npm install -g increase-memory-limit
+   increase-memory-limit

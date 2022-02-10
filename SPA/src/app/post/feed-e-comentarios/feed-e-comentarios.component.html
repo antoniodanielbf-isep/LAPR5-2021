@@ -1,0 +1,105 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Relacao</title>
+  <link rel="stylesheet" href="feed-e-comentarios.component.css">
+</head>
+
+<body>
+
+<div class="content">
+
+  <div class="title" id='title'>
+    Ver Feed
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="voltarInicio()">Página Inicial</button>
+  </div>
+  <div class="wrapper">
+    <div class="left">
+      <form [formGroup]="getFeedForm">
+        <div class="elementos">
+          <div class="email">
+            <mat-form-field appearance="fill">
+              <mat-label>Insira o Email</mat-label>
+              <input type="text" matInput formControlName="email" required id="emailFeed">
+            </mat-form-field>
+          </div>
+          <div class="btn">
+            <div class="submitBtn">
+              <button type="button" class="mat-button" id="buscarFeedPostsUser" (click)="getFeedUtilizador()"><b>Obter
+                Feed
+                de
+                Posts</b></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="right">
+      <h2>Feed: </h2>
+      <div class="row">
+        <div class="col-xs-12">
+          <ol class="list-group">
+            <li class="list-group-item" *ngFor="let post of feedUtilizador">
+              <div class="mudarcor">
+                <h4>Post From: </h4>
+                {{post.postUser}}
+                <h4>Post Content: </h4>
+                {{ post.post}}
+
+
+                <h4>Post Comments: </h4>
+                <ol class="list-group-item" *ngFor="let comment of post.comentarios">
+                  {{comment}}
+                </ol>
+
+                <form [formGroup]="comentarPostForm">
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Insira o Comentário</mat-label>
+                    <input type="text" matInput formControlName="texto" required id="textoComentario">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Introduza as tags do comentario</mat-label>
+                    <input type="text" matInput formControlName="tags" id="tagsComentario">
+                  </mat-form-field>
+
+                  <div class="submitBtn">
+                    <button type="button" class="mat-button" id="botaoPostarComentario"
+                            (click)="postarComentario(post.postId)"><b>Comentar Post</b>
+                    </button>
+                  </div>
+
+                  <div class="submitBtn">
+                    <button type="button" class="mat-button" id="botaoPostarReacao" (click)="postarReacao()"><b>Reagir
+                      Post</b></button>
+                  </div>
+
+                  <div *ngIf="verLikeEDislike">
+                    <div class="likes">
+                      <div class="submitBtn">
+                        <button type="button" class="btn btn-success" id="botaoLike" (click)="like(post.postId)">
+                          <b>Like</b>
+                        </button>
+                      </div>
+
+                      <div class="submitBtn">
+                        <button type="button" class="btn btn-danger" id="botaoDislike" (click)="dislike(post.postId)">
+                          <b>Dislike</b></button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </form>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

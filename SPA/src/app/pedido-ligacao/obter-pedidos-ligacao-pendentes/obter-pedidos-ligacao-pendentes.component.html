@@ -1,0 +1,62 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Relacao</title>
+  <link rel="stylesheet" href="obter-pedidos-ligacao-pendentes.component.css">
+</head>
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    Os seus pedidos de ligação pendentes
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="voltarAoInicio()">Página Inicial</button>
+  </div>
+
+  <div class="wrapper">
+    <div class="intros">
+      <div class="col-xs-12">
+        <ol class="list-group">
+          <li class="list-group-item" *ngFor="let pedidoLigacaoPendente of pedidosLigacaoPendentes">
+
+            <h2><b>Email de Origem do Pedido:</b> {{ pedidoLigacaoPendente.emailOrigem }}</h2>
+
+            <h2><b>Força da Ligação:</b> {{ pedidoLigacaoPendente.forcaRelacao }}</h2>
+
+            <h2><b>Tags:</b> {{ pedidoLigacaoPendente.tags }}</h2>
+
+            <button class="btn btn-success" (click)="colocarTextoPedidoLigacao()">Aceitar e Colocar Relação</button>&nbsp;
+            <button class="btn-outline-danger" (click)="rejeitarPedidoLigacao(pedidoLigacaoPendente)">Rejeitar</button>&nbsp;
+
+            <div *ngIf="pedidoLigacaoAceite">
+
+              <form [formGroup]="relacaoForm">
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Força de Ligação</mat-label>
+                  <input type="text" matInput formControlName="forcaLigacao" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Tags</mat-label>
+                  <input type="text" matInput formControlName="tagsRelacao" required>
+                </mat-form-field>
+
+                <button type="button" class="btn btn-success" (click)="submitFormRel(pedidoLigacaoPendente)">Aceitar e
+                  Criar
+                  Relação
+                </button>
+
+              </form>
+            </div>
+
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+

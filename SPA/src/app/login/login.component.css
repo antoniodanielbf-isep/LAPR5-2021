@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  height: 100%;
+  position: relative;
+  width: 30%;
+  text-align: center;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../back3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title {
+  justify-content: center;
+  text-align: center;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin: 0 0 10px 0;
+  display: inline-block;
+  border:none;
+  font-size: 16px;
+  cursor: default;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 2px solid rgb(141, 2, 2);
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.submitbtn {
+  background-color: #b8b8b8;
+  color: rgb(31, 31, 31);
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submitbtn:hover {
+  opacity: 1;
+}
+
+.submitbtn:disabled {
+  background-color: #797979;
+  color: rgb(31, 31, 31);
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: no-drop;
+  width: 100%;
+  opacity: 0.3;
+}
+
+.mat-expansion-panel {
+  margin-left: 16px;
+}

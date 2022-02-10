@@ -1,0 +1,32 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Build and Test
+      run: REPORTS_PATH=./testreports/build_${BITBUCKET_BUILD_NUMBER}
+          && dotnet restore API
+           && dotnet build --no-restore --configuration Rele API
+           && dotnet test --no-build --configuration Release API --test-adapter-path:. --  logger:"junit;LogFilePath=$REPORTS_PATH/API/junit.xml"
+           && dotnet restore TESTES
+           && dotnet build --no-restore --configuration Release TESTES
+           && dotnet test --no-build --configuration Release TESTES  --test-adapter-path:. --  logger:"junit;LogFilePath=$REPORTS_PATH/TESTES/junit.xml"
+    - name: Lint the code 
+      run: dotnet new tool-manifest
+            && dotnet tool install JetBrains.ReSharper.GlobalTools
+            && dotnet tool restore

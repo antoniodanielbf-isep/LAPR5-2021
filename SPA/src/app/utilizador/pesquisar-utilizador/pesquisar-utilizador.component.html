@@ -1,0 +1,82 @@
+<!--
+aqui teremos UC10 -> uma barra de pesquisa dividida em 3 campos: email, cidadePais e/ou Nome,
+                      e ao clicar pesquisa o(s) utilizador(es) e mostra o(s) resultados
+                      tem também 1 botão PedirLigação, que abre a janela pra
+                      por as tags e força de ligação,
+                      e tem 1 botão que envia um pedido de ligação a esse utilizador
+                      e 1 botão de cancelar q sai
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>Pesquisa de utilizador</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <link rel="stylesheet" href="pesquisar-utilizador.component.css">
+</head>
+
+<body>
+<div class="container">
+
+
+  <div class="content">
+    <form [formGroup]="pesquisaForm">
+      <div class="inicBtn">
+        <button type="button" (click)="irParaInicio()">Página Inicial</button>
+      </div>
+
+      <div class="boxNome">
+        <mat-form-field appearance="fill">
+          <input type="text" class="input" placeholder="Nome"
+                 matInput formControlName="nomeD" required>
+        </mat-form-field>
+      </div>
+
+      <div class="boxEmail">
+        <mat-form-field appearance="fill">
+          <input type="text" class="input" placeholder="Email"
+                 matInput formControlName="emailD" required>
+        </mat-form-field>
+      </div>
+
+      <div class="boxCidade">
+        <mat-form-field appearance="fill">
+          <input type="text" class="input" placeholder="Cidade"
+                 matInput formControlName="cidadePaisD" required>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div class="headers">
+      <h3>Pesquisa um Utilizador!</h3>
+      <div class="searchBtn">
+        <button type="button" (click)="pesquisarUtilizador()"><i class="fas fa-search"></i></button>
+      </div>
+
+      <li class="list-group-item" *ngFor="let utilizadorPesquisado of utilizadoresPesquisados">
+        {{utilizadorPesquisado.email}}<br>
+        {{utilizadorPesquisado.nomeUtilizador}} | {{utilizadorPesquisado.tagsUtilizador}}<br>
+        Força de Ligação entre ti o utilizador Pesquisado:
+        <b>{{forcaLigacao.valor}}</b>
+
+        <form [formGroup]="pedidoLigacaoForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Introduza a forca de ligacao</mat-label>
+            <input type="text" matInput formControlName="forca" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Introduza as tags de pedido</mat-label>
+            <input type="text" matInput formControlName="tagsL" required>
+          </mat-form-field>
+
+          <div class="submitBtn">
+            <button type="button" class="registerbtn" (click)="submeterFormPesquisa(utilizadorPesquisado.email)"><b>Pedir Ligação</b></button>
+          </div>
+        </form>
+
+      </li>
+
+    </div>
+  </div>
+</div>
+</body>
+

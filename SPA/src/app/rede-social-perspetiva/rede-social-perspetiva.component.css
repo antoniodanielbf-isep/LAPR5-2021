@@ -1,0 +1,181 @@
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Century Gothic";
+  color: black;
+}
+
+.content {
+  height: 100vh;
+  width: 1920px;
+  background-image: url('../back3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.topper {
+  position: absolute;
+  margin-left: 6%;
+  margin-top: 2.5%;
+}
+
+.content .topper button {
+  padding: 2vh 2vw;
+  border-color: indianred;
+  cursor: pointer;
+  overflow: hidden;
+  color: black;
+  border-radius: 30px;
+  box-shadow: 0 0 0 0 rgba(113, 81, 222, 0.5), 0 0 0 0 rgba(198, 47, 56, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content .topper button::after {
+  content: "";
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: -135px;
+  left: -18px;
+  background-color: lightcoral;
+  background-image: linear-gradient(225deg, rgba(238, 156, 239, 0.96) 0%, #e35757 50%, #aa38ba 100%);
+  z-index: -1;
+  transition: transform 0.5s ease;
+}
+
+.content .topper button:hover {
+  transform: translate(0, -6px);
+  box-shadow: 10px -10px 25px 0 rgba(125, 125, 125, 0.5), -10px 10px 25px 0 rgba(215, 54, 65, 0.56);
+}
+
+.content .topper button:hover::after {
+  transform: rotate(150deg);
+}
+
+.title {
+  position: relative;
+  width: 1920px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 6vmin;
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.47) 0%, rgba(199, 53, 53, 0.75) 50%, #aa38ba 100%);
+  cursor: default;
+}
+
+.info_total {
+  position: relative;
+  display: inline-flex;
+  left: 26%;
+  width: 900px;
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.3) 0%, rgba(199, 53, 53, 0.3) 50%, rgba(170, 56, 186, 0.3) 100%);
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.info_total .escolher-niveis {
+  text-align: center;
+  margin: 10px 30px 5px 5px;
+}
+
+.info_total .topper_resto {
+  margin: 5px 30px 5px 5px;
+  width: 550px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info_total .topper_resto .destino {
+  margin: 5px 60px 5px 30px;
+}
+
+.imprimir_caminhos {
+  position: absolute;
+  top: 61.2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 650px;
+  width: 1000px;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+  background-image: linear-gradient(225deg, rgba(199, 53, 53, 1) 0%, rgba(199, 53, 53, 1) 50%, rgba(199, 53, 53, 1) 100%);
+  text-align: justify-all;
+}
+
+.left {
+  position: absolute;
+  width: 400px;
+  height: 650px;
+  padding: 30px 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.3) 0%, rgba(199, 53, 53, 0.3) 50%, rgba(170, 56, 186, 0.3) 100%);
+}
+
+.left .bottom {
+  margin-top: 20px;
+}
+
+.valorMinimoDiv {
+  position: absolute;
+  top: 75%;
+  display: flex;
+  width: 400px;
+  z-index: 1;
+  text-align: center;
+}
+
+.right_emocional {
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+  position: absolute;
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.3) 0%, rgba(199, 53, 53, 0.3) 10%, rgba(170, 56, 186, 0.3) 100%);
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 25px 15px;
+  top: 56.5%;
+  left: 79.2%;
+  font-weight: bold;
+}
+
+.right_emocional .bottom {
+  margin-top: 20px;
+}
+
+.valorMinimo {
+  position: relative;
+  display: flex;
+  z-index: 1;
+  text-align: center;
+}
+
+.valorMinimo .box {
+  margin-right: 20px;
+}
+
+button {
+  border-radius: 10px;
+  border-color: indianred;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  padding: 7px 7px;
+}
+
+.right {
+  width: 400px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 30px 25px;
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+  float: right;
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.3) 0%, rgba(199, 53, 53, 0.3) 50%, rgba(170, 56, 186, 0.3) 100%);
+}
+
+.right .total_users {
+  margin-top: 12px;
+}

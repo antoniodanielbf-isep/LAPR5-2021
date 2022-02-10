@@ -1,0 +1,92 @@
+<!--lista de utilizadores objetivo, após clicar no botão para ver o intermediário
+é pedido pra colocar os dados no formulário, e só ao clicar em pedir introdução é que
+realmente pede introdução ao utilizador objetivo X, passando pelo intermediário Y,
+com mensagem de texto para Y
+ng if para q, ao clicar no botão, apareça o formulário de pedido de introdução-->
+
+<!--aqui ele vai pedir para colocar o email do utilizador
+   a quem se pretende fazer a introdução,
+   e ao clicar no botão para efetuar pedido
+   o sistema faz um getUtilizadorIntermediário
+   logo de seguida basta apenas escrever a mensagem de
+   texto para o intermediário
+   e é feito um postPedidoIntrodução
+   com os seguintes dados : descricao, emailIntermediário, emailDestino, estado (neste caso = 3),
+   força e Tags-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pedir Introdução ao Utilizador Objetivo</title>
+  <link rel="stylesheet" href="pedir-introducao-utilizador-objetivo.component.css">
+</head>
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    Pedir Introdução a Utilizadores Objetivo
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+  <div class="wrapper">
+    <div class="elem">
+      <div>
+        <div class="titulo">
+          <mat-panel-title>Sugestões de Utilizadores Objetivo para pedir introdução</mat-panel-title>
+        </div>
+        <ol class="list-group">
+          <li class="list-group-item" *ngFor="let sugestaoUtilizadorObjetivo of listaUtilizadoresSugeridos">
+            Talvez conheça: <b>{{sugestaoUtilizadorObjetivo.nomeUtilizador}}</b> <br>
+            Com Email: <b>{{sugestaoUtilizadorObjetivo.email}}</b>
+          </li>
+        </ol>
+      </div>
+
+
+      <div>
+        <form [formGroup]="emailDestinoForm">
+          <mat-label>Email de Destino </mat-label>
+          <input type="text" matInput formControlName="emailDestino" required>
+        </form>
+      </div>
+
+      <div>
+        <button class="btn" (click)="getUtilizadorIntermediarioEFazerPedidoIntro()">
+          Ver Intermediario e fazer Pedido de Introdução
+        </button>&nbsp;
+      </div>
+
+
+      <div *ngIf="pedidoIntroducaoFeito">
+
+        Utilizador Intermediário: <b>{{utilizadorIntermediario?.email}}</b>
+
+
+        <form [formGroup]="pedidoIntroForm">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Descricao</mat-label>
+            <input type="text" matInput formControlName="descricao" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Forca</mat-label>
+            <input type="text" matInput formControlName="forca" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Lista de Tags</mat-label>
+            <input type="text" matInput formControlName="listTags" required>
+          </mat-form-field>
+
+          <button class="btn" (click)="submitFormPedidoIntroducao()">Fazer Pedido de Introdução</button>&nbsp;
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>

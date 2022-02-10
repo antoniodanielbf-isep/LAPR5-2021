@@ -1,0 +1,56 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="aceitar-rejeitar-introducao.component.css">
+</head>
+<body>
+<div class="content">
+  <div class="title" id='title'>
+    As minhas Introduções
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+  <div class="wrapper">
+    <div class="intros">
+      <div class="row">
+        <div class="col-xs-12">
+          <ol class="list-group">
+            <li class="list-group-item" *ngFor="let introducaoPendente of listaIntroducoesPendentes">
+              Utilizador Origem: <b>{{introducaoPendente.utilizadorOrigem}}</b> <br>
+              <button class="btn btn-success" (click)="aceitarColocarRelacao()">Aceitar e Colocar Relação</button>&nbsp;
+              <button class="btn btn-warning" (click)="rejeitarIntroducao(introducaoPendente)">Rejeitar</button>&nbsp;
+              Descrição: {{introducaoPendente.descricao}}
+
+              <div *ngIf="introducaoAceite">
+
+                <form [formGroup]="relacaoForm">
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Força de Ligação</mat-label>
+                    <input type="text" matInput formControlName="forcaLigacao" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Tags</mat-label>
+                    <input type="text" matInput formControlName="tagsRelacao" required>
+                  </mat-form-field>
+
+                  <button type="button" class="btn btn-success" (click)="submitFormRel(introducaoPendente)">ACEITAR E
+                    CRIAR
+                    RELAÇÃO
+                  </button>
+
+                </form>
+              </div>
+
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>

@@ -1,0 +1,106 @@
+<div id='title'>
+  Perspetiva Rede Social
+</div>
+
+
+<div id='parent'>
+
+  <div id='views-panel'>
+    <table class='views'>
+      <button type="button" class="btn btn-success" (click)="iniciar(true)">start</button>
+      <button type="button" class="btn btn-success" (click)="iniciar2D()">2D</button>
+      <button type="button" class="btn btn-success" (click)="iniciar3D()">3D</button>
+      <button type="button" class="btn btn-success" (click)="iniciar3DOrbit()">3DOrbit</button>
+    </table>
+
+<div class="formulario">
+      <form [formGroup]="editarRede">
+        <div class="escolher-niveis">
+          <h4>Nivel de Perspetiva</h4>
+
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="nivelEditado">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let nivel of niveis" [value]="nivel.number">
+                {{nivel.nivel}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="destino">
+          <mat-form-field appearance="outline">
+            <mat-label>Utilizador Destino</mat-label>
+            <input type="text" matInput formControlName="utilizadorDestino" required>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="caminhoSeguro">
+          <div class="valorMinimo">
+            <mat-form-field appearance="outline">
+              <mat-label>Valor Mínimo</mat-label>
+              <input type="text" matInput formControlName="valorMinimo" required>
+            </mat-form-field>
+            <button type="button" class="caminhoSeguro" (click)="consultarCaminhoMaisSeguro()"><b>Consultar Caminho
+              Mais
+              Seguro!</b></button>
+          </div>
+        </div>
+
+      </form>
+
+
+    <!--botões dos caminhos-->
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="consultarCaminhoMaisCurto()"><b>Consultar Caminho Mais
+        Curto!</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="consultarCaminhoMaisForte()"><b>Consultar Caminho Mais
+        Forte!</b></button>
+    </div>
+
+    <div class="bottom">
+      <button type="button" class="consultar-caminho" (click)="mostrarFormValorMinimo()"><b>Colocar Valor Mínimo para
+        Caminho Mais
+        Seguro!</b></button>
+    </div>
+
+
+      <div class="bottom">
+        <button type="button" class="consultar-caminho" (click)="resetCoresCaminhos()"><b>Limpar Cores Caminhos!</b></button>
+      </div>
+
+  <div class="bottom">
+    <button type="button" class="btn btn-secondary" (click)="irParaInicio()"><b>Página Inicial</b></button>
+
+  </div>
+
+  <div>
+    Cores e estados de humor correspondentes:<br>
+    Amarelo Canário-Alegria<br>
+    Laranja-Angústia<br>
+    Verde-Esperança<br>
+    Roxo Escuro-Medo<br>
+    Cor da Pele-Alívio<br>
+    Azul Escuro-Deceção<br>
+    Azul-Orgulho<br>
+    Lilás-Remorsos<br>
+    Bege-Gratidão<br>
+    Vermelho Escuro-Raiva<br>
+  </div>
+
+  <div>
+    Teclas: A-Direita, S-Baixo, D-esquerda, W-Cima, L-descer, P-subir
+  </div>
+
+  <div>
+    Roda do rato-Zoom
+    Botão direito-Girar a rede social
+    Botão esquerdo-Mover a rede social
+  </div>
+
+    </div>
+  </div>
+</div>

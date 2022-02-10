@@ -1,0 +1,182 @@
+body{
+  margin:0;
+  padding: 0;
+}
+
+.content{
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../back3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+*{
+  font-family: "Century Gothic";
+  color: black;
+}
+
+nav{
+  height: 8vh;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border-style: solid;
+  border-color: black;
+  width: 100vw;
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.47) 0%, rgba(199, 53, 53, 0.75) 50%, #aa38ba 100%);
+}
+
+nav:after{
+  content: '';
+  clear: both;
+  display: table;
+}
+
+nav ul{
+  float: right;
+  list-style: none;
+  position: relative;
+  margin-top: 0.5%;
+}
+
+nav ul li{
+  float: left;
+  display: inline;
+  margin: 0 2px;
+
+}
+
+nav ul li a{
+  text-decoration: none;
+  line-height: 75px;
+  font-size: 13px;
+  padding: 10px 25px;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: black;
+  background-color: white;
+}
+
+nav ul li a:hover{
+  color: indianred;
+  box-shadow: 0 0 5px #cb4848, 0 0 5px #b566c9;
+}
+
+nav ul ul{
+  position: absolute;
+  top: 65px;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0 25px;
+  width: 600px;
+}
+
+nav ul ul li{
+  position: relative;
+  display: inline-grid;
+  background: rgba(183, 180, 180, 0.8);
+  border-radius: 20px;
+
+}
+
+nav ul li:hover > ul{
+  opacity: 1;
+  visibility: visible;
+
+}
+
+.logout-button{
+  color: Black;
+  margin-top: -5px;
+  border-color: indianred;
+}
+
+.logout{
+  margin-top: 100px;
+  margin-left: 500px;
+
+}
+
+.logo{
+  margin-right: 2vw;
+  margin-top: -1vh;
+
+}
+
+.nav-item{
+  padding: -3vw;
+  font-size: 10vw;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.sub-item{
+  cursor: pointer;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.headers{
+  text-align: center;
+}
+
+.headers h2,h3{
+  padding: 0;
+  margin:0;
+  text-shadow: 10px 20px 60px black;
+}
+
+.content h2{
+  font-size: 6vw;
+  color: indianred;
+  font-family: Berkshire Swash;
+  -webkit-text-stroke: 3px black;
+}
+
+.content h3{
+  font-size: 1vw;
+  font-family: Berkshire Swash;
+  font-weight: bold;
+}
+
+button{
+  padding:2vh 2vw;
+  margin: 10vh 2vw;
+  border-color: indianred;
+  cursor: pointer;
+  font-weight: bold;
+  overflow: hidden;
+  color: black;
+  border-radius: 30px;
+  box-shadow: 0 0 0 0 rgba(113, 81, 222, 0.5), 0 0 0 0 rgba(198, 47, 56, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button::after{
+  content: "";
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: -135px;
+  left: -18px;
+  background-color: lightcoral;
+  background-image: linear-gradient(225deg, rgba(238, 156, 239, 0.96) 0%, #e35757 50%, #aa38ba 100%);
+  z-index: -1;
+  transition: transform 0.5s ease;
+}
+
+button:hover{
+  transform: translate(0,-6px);
+  box-shadow: 10px -10px 25px 0 rgba(125,125,125,0.5), -10px 10px 25px 0 rgba(215, 54, 65, 0.56);
+}
+
+button:hover::after{
+  transform: rotate(150deg);
+}

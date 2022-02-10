@@ -1,0 +1,73 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Relacao</title>
+  <link rel="stylesheet" href="tags-cloud.component.css">
+</head>
+
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    TagsCloud
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+
+  <div class="wrapper">
+    <div class="butao1">
+      <button class="button" (click)="verTagCloudTodosUtilizadores()">Consultar tag cloud das tags de todos os
+        utilizadores
+      </button>&nbsp;
+    </div>
+    <h1></h1>
+    <!--para as tags-->
+    <div class="label1">
+      <div *ngIf="tagsTodosUtilizadoresVistas">
+        <b> As tags de todos os utilizadores:</b> <br>
+        {{tagsTodosUtilizadores.tags}}
+      </div>
+    </div>
+
+    <div class="butao1">
+      <button class="button" (click)="verTagCloudUtilizador()">Consultar tag cloud das tags do
+        utilizador
+      </button>
+    </div>
+    <h1></h1>
+    <div class="label2">
+      <div *ngIf="tagsUtilizadorVistas">
+        <b> As tags do utilizador:</b> <br>
+        {{tagsUtilizador.tags}}
+      </div>
+    </div>
+
+    <div class="butao1">
+      <button class="button" (click)="verTagCloudTodasRelacoes()">Consultar tag cloud das tags de todas as
+        relações os utilizadores
+      </button>
+    </div>
+    <h1></h1>
+    <div class="label3">
+      <div *ngIf="tagsTodasRelacoesVistas">
+        <b> As tags de todas as relações:</b> <br>
+        {{tagsTodasRelacaoes.tags}}
+      </div>
+    </div>
+    <div class="butao1">
+      <button class="button" (click)="verTagCloudRelacoesUtilizador()">Consultar tag cloud das tags de todas as
+        relações de todos os utilizadores
+      </button>
+    </div>
+    <h1></h1>
+    <div class="label4">
+      <div *ngIf="tagsRelacoesUtilizadorVistas">
+        <b> As tags das relações do utilizador:</b> <br>
+        {{tagsRelacaoesUtilizador.tags}}
+      </div>
+    </div>
+  </div>
+</div>
+</body>

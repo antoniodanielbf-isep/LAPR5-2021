@@ -1,0 +1,8 @@
+.mat-tab-nav-bar {
+  background-color: #ffffff;
+  justify-content: center;
+}
+
+.mat-tab-link {
+  flex: 1;
+}

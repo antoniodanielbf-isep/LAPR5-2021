@@ -1,0 +1,94 @@
+<body>
+<div class="container">
+  <h2><b>Registar Utilizador</b></h2>
+  <hr>
+
+  <form [formGroup]="utilizadorForm">
+    <div class="left">
+      <mat-form-field appearance="fill" id="emailRegisto">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="nomeRegisto">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput formControlName="nomeUtilizador" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="breveDescricaoRegisto">
+        <mat-label>Breve Descricao</mat-label>
+        <input type="text" matInput formControlName="breveDescricaoUtilizador" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="numeroTelefoneRegisto">
+        <mat-label>Numero de Telefone</mat-label>
+        <input type="text" matInput formControlName="numeroDeTelefoneUtilizador" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="dataNacimentoRegisto">
+        <mat-label>Data de Nascimento</mat-label>
+        <input type="text" matInput formControlName="dataDeNascimentoUtilizador" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="perfilFacebookRegisto">
+        <mat-label>Perfil Facebook</mat-label>
+        <input type="text" matInput formControlName="perfilFacebookUtilizador" required>
+      </mat-form-field>
+    </div>
+    <div class="right">
+      <mat-form-field appearance="fill" id="perfilLinkedinRegisto">
+        <mat-label>Perfil Linkedin</mat-label>
+        <input type="text" matInput formControlName="perfilLinkedinUtilizador" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="urlImagemRegisto">
+        <mat-label>Url Imagem</mat-label>
+        <input type="text" matInput formControlName="urlImagem" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="cidadePaisRegisto">
+        <mat-label>Cidade e Pais</mat-label>
+        <input type="text" matInput formControlName="cidadePais" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="passwordRegisto">
+        <mat-label>Password</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" required>
+        <button tabIndex="-1" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="estadoEmocionalRegisto">
+        <mat-label>Estado de Humor</mat-label>
+        <mat-select formControlName="estadoEmocionalUtilizador" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let estado of estados" [value]="estado.number">
+            {{estado.estado}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="tagsRegisto">
+        <mat-label>Tags</mat-label>
+        <input type="text" matInput formControlName="tagsUtilizador" required>
+      </mat-form-field>
+    </div>
+
+    Ao criar o utilizador, declara que "li, compreendi e consenti o tratamento dos dados!   "
+    <button class="mat-raised-button" style="color: blue" id="termosRegisto"
+            (click)="redirectParaTermos()">
+      INFORMAÇÃO LEGAL
+    </button>
+    <br>
+
+
+    <mat-checkbox labelPosition="before" indeterminate="false" color="primary" id="consentimentoRegisto" (click)="checkar()"> "Ao clicar declara o seu consentimento explícito de que os
+    seus dados serão tratados conforme esclarecidos nos termos!" </mat-checkbox>
+
+    <button type="button" class="registerbtn" id="botaoRegisto" (click)="submitForm()"><b>CREATE
+      USER</b></button>
+  </form>
+</div>
+</body>

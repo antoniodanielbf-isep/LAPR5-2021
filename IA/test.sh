@@ -1,0 +1,10 @@
+echo off
+
+echo A TESTAR A APLICACAO
+
+echo NOTHING TO TEST
+
+
+echo TESTES CONCLUIDOS
+
+exit

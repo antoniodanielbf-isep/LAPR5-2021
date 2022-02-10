@@ -1,0 +1,150 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil Utilizador</title>
+  <link rel="stylesheet" href="change-utilizador-info.component.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+
+
+<body>
+<form [formGroup]="editarForm">
+  <div class="wrapper">
+    <div class="left">
+      <img src="https://icon-library.com/images/user-icon-png-transparent/user-icon-png-transparent-6.jpg" alt="User"
+           width="100">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Url Imagem</mat-label>
+        <input [(ngModel)]="utilizador.urlImagem" matInput formControlName="urlImagem">
+      </mat-form-field>
+
+
+      <h4>Nome utilizador</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input [(ngModel)]="utilizador.nomeUtilizador" matInput formControlName="nomeUtilizador">
+      </mat-form-field>
+
+      <p>Descriçao Breve</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Breve Descricao</mat-label>
+        <input [(ngModel)]="utilizador.breveDescricaoUtilizador" matInput formControlName="breveDescricaoUtilizador">
+      </mat-form-field>
+      <p></p>
+      <form [formGroup]="editarHumorForm">
+        <div class="data">
+          <h4>Estado Emocional</h4>
+
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="estado">
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let estado of estados" [value]="estado.number">
+                {{estado.estado}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+
+      <div class="data">
+        <button type="button" class="alterarH" (click)="alterarHumor()"><b>Alterar Humor</b></button>
+      </div>
+
+    </div>
+    <div class="right">
+      <div class="info">
+        <h3>Informação do Perfil</h3>
+        <div class="info_data">
+          <div class="data">
+            <h4>Email</h4>
+            <p>{{userInfo.email}}</p>
+          </div>
+          <div class="data">
+            <h4>Telemóvel</h4>
+            <p>{{utilizador?.numeroDeTelefoneUtilizador}}</p>
+          </div>
+          <div class="data">
+            <h4>Data Nascimento</h4>
+            <p>{{utilizador?.dataDeNascimentoUtilizador}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects">
+        <h3>Informação adicional</h3>
+        <div class="projects_data">
+          <div class="data">
+            <h4>Tags do Utilizador</h4>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Tags</mat-label>
+              <input [(ngModel)]="utilizador.tagsUtilizador" matInput formControlName="tagsUtilizador">
+            </mat-form-field>
+
+          </div>
+
+          <div class="data">
+            <h4>Pais/Cidade</h4>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Cidade e Pais</mat-label>
+              <input [(ngModel)]="utilizador.cidadePaisResidencia" matInput formControlName="cidadePais">
+            </mat-form-field>
+          </div>
+
+          <div class="data">
+            <h4>Password</h4>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input [(ngModel)]="utilizador.passwordU" matInput formControlName="password">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="socials">
+        <h3>Redes Sociais</h3>
+        <div class="social_data">
+          <div class="social_media">
+            <ul>
+
+              <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+              <mat-form-field appearance="fill">
+                <mat-label>Perfil Facebook</mat-label>
+                <input [(ngModel)]="utilizador.perfilFacebookUtilizador" matInput
+                       formControlName="perfilFacebookUtilizador">
+              </mat-form-field>
+
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+              <mat-form-field appearance="fill">
+                <mat-label>Perfil Linkedin</mat-label>
+                <input [(ngModel)]="utilizador.perfilLinkedinUtilizador" matInput
+                       formControlName="perfilLinkedinUtilizador">
+              </mat-form-field>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="bottom">
+    <button type="button" class="registerbtn" (click)="submitForm()"><b>Alterar Informações</b></button>
+
+    <button type="button" (click)="aparecer()">ApagarDados</button>
+
+    <div class="conf_btn">
+      <div *ngIf="aparecerOpcoes">
+        <button class="warning" (click)="apagarDados()">Confirmar</button>&nbsp;
+      </div>
+    </div>
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="irParaInicio()">Página Inicial</button>
+  </div>
+</form>
+</body>

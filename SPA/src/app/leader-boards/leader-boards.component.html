@@ -1,0 +1,80 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Leaderboards</title>
+  <link rel="stylesheet" href="leader-boards.component.css">
+</head>
+
+<body>
+<div class="content">
+  <div class="title" id='title'>
+    LeaderBoards
+  </div>
+
+  <div class="topper">
+    <button type="button" (click)="voltarAoInicio()">Página Inicial</button>
+  </div>
+
+  <div class="wrapper">
+    <div class="dimensao1">
+      <button type="button" class="button" (click)="verLeaderboardDimensao()">
+        Consultar leaderboard de dimensão de rede
+      </button>
+    </div>
+
+    <div *ngIf="leaderBoardDimensaoCarregada">
+
+      <ol class="list-group">
+        <li class="list-group-item" *ngFor="let dimensaoScore of leaderBoardDimensaoRede,index as i">
+
+          <h2><b>Posição:{{i + 1}}</b></h2> <br>
+          <h3><b>Email:</b> {{ dimensaoScore.email }}</h3> <br>
+          <h3><b>Dimensao da sua rede:</b> {{ dimensaoScore.valor }}</h3>
+
+        </li>
+      </ol>
+
+    </div>
+    <div class="dimensao2">
+      <div>
+        <button type="button" class="button" (click)="verLeaderboardFortaleza()">
+          Consultar leaderboard de fortaleza de rede
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="leaderBoardFortalezaCarregada">
+
+      <ol class="list-group">
+        <li class="list-group-item" *ngFor="let fortalezaScore of leaderBoardFortalezaRede,index as i">
+
+          <h2><b>Posição:{{i + 1}}</b></h2> <br>
+          <h3><b>Email:</b> {{ fortalezaScore.email }}</h3> <br>
+          <h3><b>Fortaleza da sua rede:</b> {{ fortalezaScore.valor }}</h3>
+
+        </li>
+      </ol>
+
+    </div>
+    <div class="dimensao3">
+      <div>
+        <button type="button" class="button" (click)="verLeaderboardPontuacao()">
+          Consultar leaderboard de pontuação
+        </button>
+      </div>
+    </div>
+    <div *ngIf="leaderBoardPontuacaoCarregada">
+
+      <ol class="list-group">
+        <li class="list-group-item" *ngFor="let fortalezaScore of leaderBoardPontuacaoRede,index as i">
+
+          <h2><b>Posição:{{i + 1}}</b></h2> <br>
+          <h3><b>Email:</b> {{ fortalezaScore.email }}</h3> <br>
+          <h3><b>Pontuação:</b> {{ fortalezaScore.valor }}</h3>
+
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</div>
+</body>

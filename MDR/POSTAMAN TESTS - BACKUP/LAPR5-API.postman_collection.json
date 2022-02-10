@@ -1,0 +1,1501 @@
+{
+	"info": {
+		"_postman_id": "3281a7ca-1e7d-4a35-9e18-6b9c30438d43",
+		"name": "LAPR5-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Utilizador",
+			"item": [
+				{
+					"name": "POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct email\", function () {\r",
+									"    pm.expect(responseJson.email).to.eql(pm.environment.get(\"emailVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.nomeUtilizador).to.eql(pm.environment.get(\"nomeVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.breveDescricaoUtilizador).to.eql(pm.environment.get(\"descVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.numeroDeTelefoneUtilizador).to.eql(pm.environment.get(\"telefoneVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct birth date\", function () {\r",
+									"    pm.expect(responseJson.dataDeNascimentoUtilizador).to.contains(pm.environment.get(\"nascimentoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct emotional state\", function () {\r",
+									"    pm.expect(responseJson.estadoEmocionalUtilizador).to.eql(pm.environment.get(\"estadoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct facebook\", function () {\r",
+									"    pm.expect(responseJson.perfilFacebookUtilizador).to.eql(pm.environment.get(\"faceVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct linkedIn\", function () {\r",
+									"    pm.expect(responseJson.perfilLinkedinUtilizador).to.eql(pm.environment.get(\"linkedVar\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body returns the correct city or country\", function () {\r",
+									"    pm.expect(responseJson.cidadePaisResidencia).to.eql(pm.environment.get(\"paiscidadeVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct image\", function () {\r",
+									"    pm.expect(responseJson.urlImagem).to.eql(pm.environment.get(\"avatarVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct password\", function () {\r",
+									"    pm.expect(responseJson.password).to.eql(pm.environment.get(\"*****\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"emailVar\", \"rosita2@gmail.com\");\r",
+									"\r",
+									"pm.environment.set(\"nomeVar\", \"Rosa\");\r",
+									"\r",
+									"pm.environment.set(\"descVar\", \"gosto de arroz\");\r",
+									"\r",
+									"pm.environment.set(\"telefoneVar\", \"919292945\");\r",
+									"\r",
+									"pm.environment.set(\"nascimentoVar\", \"10/10/2000\");\r",
+									"\r",
+									"pm.environment.set(\"estadoVar\", 5);\r",
+									"\r",
+									"pm.environment.set(\"faceVar\", \"https://www.facebook.com/groups/1762527097326481/?hoisted_section_header_type=recently_seen&multi_permalinks=3075533422692502\");\r",
+									"\r",
+									"pm.environment.set(\"linkedVar\", \"https://www.linkedin.com/company/ntt-data/\");\r",
+									"\r",
+									"pm.environment.set(\"paiscidadeVar\", \"Ribadouro\");\r",
+									"\r",
+									"pm.environment.set(\"avatarVar\", \"https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/g70ennv4qmjjj0tolemm\");\r",
+									"\r",
+									"pm.environment.set(\"passVar\", \"passwordmano\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeUtilizador\": \"{{nomeVar}}\",\r\n    \"breveDescricaoUtilizador\": \"{{descVar}}\",\r\n    \"email\": \"{{emailVar}}\",\r\n    \"numeroDeTelefoneUtilizador\": \"{{telefoneVar}}\",\r\n    \"dataDeNascimentoUtilizador\": \"{{nascimentoVar}}\",\r\n    \"estadoEmocionalUtilizador\": \"{{estadoVar}}\",\r\n    \"perfilFacebookUtilizador\": \"{{faceVar}}\",\r\n    \"perfilLinkedinUtilizador\": \"{{linkedVar}}\",\r\n    \"tagsUtilizador\": [\r\n        \"Francesa\",\r\n        \"Pobre da Zona\"\r\n    ],\r\n    \"cidadePaisResidencia\": \"{{paiscidadeVar}}\",\r\n    \"urlImagem\": \"{{avatarVar}}\",\r\n    \"password\": \"{{passVar}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Utilizador",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Utilizador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no users\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Utilizador",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Utilizador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no users\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Utilizador/rosita2@gmail.com",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Utilizador",
+								"rosita2@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> Pedidos Ligação (REVER)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no users\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Utilizador/getPedidosLigacao/rosita2@gmail.com",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Utilizador",
+								"getPedidosLigacao",
+								"rosita2@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT-> Editar Humor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct emotional state\", function () {\r",
+									"    pm.expect(responseJson.estadoEmocionalUtilizador).to.eql(2);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeUtilizador\": \"Frageiro\",\r\n    \"BreveDescricaoUtilizador\": \"Sou rica e poderosa\",\r\n    \"Email\": \"rosita2@gmail.com\",\r\n    \"NumeroDeTelefoneUtilizador\": \"963636927\",\r\n    \"DataDeNascimentoUtilizador\": \"25/04/1974\",\r\n    \"EstadoEmocionalUtilizador\": \"2\",\r\n    \"PerfilFacebookUtilizador\": \"https://www.facebook.com/profile.php?id=100013513501470\",\r\n    \"PerfilLinkedinUtilizador\": \"https://www.linkedin.com/in/taniachavesmkt/\",\r\n    \"TagsUtilizador\": [\r\n        \"Francesa\",\r\n        \"Pobre da Zona\"\r\n    ],\r\n    \"CidadePaisResidencia\": \"Vila Franca de Xira\",\r\n    \"urlImagem\": \"https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png\",\r\n    \"Password\": \"Password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Utilizador/rosita2@gmail.com/humor",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Utilizador",
+								"rosita2@gmail.com",
+								"humor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT-> Editar Perfil",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct email\", function () {\r",
+									"    pm.expect(responseJson.email).to.eql(\"rosita2@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.nomeUtilizador).to.eql(\"Jose\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.breveDescricaoUtilizador).to.eql(\"prefiro tabaco\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.numeroDeTelefoneUtilizador).to.eql(\"919292945\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct birth date\", function () {\r",
+									"    pm.expect(responseJson.dataDeNascimentoUtilizador).to.toString(pm.environment.get(\"10/10/2000\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct emotional state\", function () {\r",
+									"    pm.expect(responseJson.estadoEmocionalUtilizador).to.eql(5);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct facebook\", function () {\r",
+									"    pm.expect(responseJson.perfilFacebookUtilizador).to.eql(\"https://www.facebook.com/rosa.ferreira.1428\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct linkedIn\", function () {\r",
+									"    pm.expect(responseJson.perfilLinkedinUtilizador).to.eql(\"https://www.linkedin.com/login/pt\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body returns the correct city or country\", function () {\r",
+									"    pm.expect(responseJson.cidadePaisResidencia).to.eql(\"Brasil\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct image\", function () {\r",
+									"    pm.expect(responseJson.urlImagem).to.eql(\"https://iconscout.com/icon/avatar-1253\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct password\", function () {\r",
+									"    pm.expect(responseJson.password).to.eql(pm.environment.get(\"*****\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeUtilizador\": \"Jose\",\r\n    \"breveDescricaoUtilizador\": \"prefiro tabaco\",\r\n    \"email\": \"rosita2@gmail.com\",\r\n    \"numeroDeTelefoneUtilizador\": \"919292945\",\r\n    \"dataDeNascimentoUtilizador\": \"10/10/2000\",\r\n    \"estadoEmocionalUtilizador\": 5,\r\n    \"perfilFacebookUtilizador\": \"https://www.facebook.com/rosa.ferreira.1428\",\r\n    \"perfilLinkedinUtilizador\": \"https://www.linkedin.com/login/pt\",\r\n    \"tagsUtilizador\": [\r\n        \"Australiana\",\r\n        \"Rica na Zona\"\r\n    ],\r\n    \"cidadePaisResidencia\": \"Brasil\",\r\n    \"urlImagem\": \"https://iconscout.com/icon/avatar-1253\",\r\n    \"password\": \"linharosa123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Utilizador/rosita2@gmail.com/allinfo",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Utilizador",
+								"rosita2@gmail.com",
+								"allinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EditarRelação",
+			"item": [
+				{
+					"name": "GET-> All (email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Found relation returns status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Found relation with correct email\", function () {\r",
+									"    pm.expect(responseJson.utilizadorOrigem).to.eql(pm.environment.get(\"rosita2@gmail.com\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no relations with this email\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/EditarRelacao/rosita2@gmail.com/all",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"EditarRelacao",
+								"rosita2@gmail.com",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET->  Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Found relation returns status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Relation has correct id\", function () {\r",
+									"    pm.expect(responseJson.id).to.eql(pm.environment.get(\"relacao1\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/EditarRelacao/relacao1",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"EditarRelacao",
+								"relacao1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT-> Editar Relacao (REVER)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct relation strenght state\", function () {\r",
+									"    pm.expect(responseJson.forcaLigacaoOrigDest).to.eql(15);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"relacaoId\": \"relacao1\",\r\n    \"utilizadorOrigem\": \"rosita2@gmail.com\",\r\n    \"utilizadorDestino\": \"fa@isep.ipp.pt\",\r\n    \"forcaLigacaoOrigDest\": 15,\r\n    \"forcaLigacaoDestOrig\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Relacao/rosita2@gmail.com/relacao1/allinfo",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Relacao",
+								"rosita2@gmail.com",
+								"relacao1",
+								"allinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PedirIntrodução",
+			"item": [
+				{
+					"name": "POST",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"idVar\", \"PedidoIntroPost\");\r",
+									"\r",
+									"pm.environment.set(\"descVar\", \"descPost\");\r",
+									"\r",
+									"pm.environment.set(\"origemVar\", \"rosita2@gmail.com\");\r",
+									"\r",
+									"pm.environment.set(\"intermedioVar\", \"fa@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"destinoVar\", \"fe@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"estadoVar\", \"Pendente\");\r",
+									"\r",
+									"pm.environment.set(\"forcaVar\", 1);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct id\", function () {\r",
+									"    pm.expect(responseJson.id).to.eql(pm.environment.get(\"idVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.descricao).to.eql(pm.environment.get(\"descVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.emailOrigem).to.eql(pm.environment.get(\"origemVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.emailIntermedio).to.eql(pm.environment.get(\"intermedioVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.emailDestino).to.eql(pm.environment.get(\"destinoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.estadoPedidoIntroducao).to.eql(pm.environment.get(\"estadoVar\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{idVar}}\",\r\n    \"descricao\": \"{{descVar}}\",\r\n    \"emailOrigem\": \"{{origemVar}}\",\r\n    \"emailIntermedio\": \"{{intermedioVar}}\",\r\n    \"emailDestino\": \"{{destinoVar}}\",\r\n    \"estadoPedidoIntroducao\": \"{{estadoVar}}\",\r\n    \"forca\": \"{{forcaVar}}\",\r\n    \"tags\": [\r\n        \"Francesa\",\r\n        \"Pobre da Zona\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/PedirIntroducao/rosita2@gmail.com/makeRequest",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"PedirIntroducao",
+								"rosita2@gmail.com",
+								"makeRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no introductions\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/PedirIntroducao",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"PedirIntroducao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> All (email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Found request returns status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Found request with correct email\", function () {\r",
+									"    pm.expect(responseJson.origem_Email).to.eql(pm.environment.get(\"fa@isep.ipp.pt\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no requests with this email\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/PedirIntroducao/fa@isep.ipp.pt",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"PedirIntroducao",
+								"fa@isep.ipp.pt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PesquisarUtilizador (REVER)",
+			"item": [
+				{
+					"name": "POST",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"estadoVar\", \"A_AGUARDAR_RESPOSTA\");\r",
+									"\r",
+									"pm.environment.set(\"idVar\", \"PesquisaPost\");\r",
+									"\r",
+									"pm.environment.set(\"emailOVar\", \"rosita2@gmail.com\");\r",
+									"\r",
+									"pm.environment.set(\"emailDVar\", \"fa@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"forcaVar\", 10);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct email\", function () {\r",
+									"    pm.expect(responseJson.estadoPedidoLigacao).to.eql(pm.environment.get(\"estadoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.id).to.eql(pm.environment.get(\"idVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.emailOrigem).to.eql(pm.environment.get(\"emailOVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.emailDestino).to.eql(pm.environment.get(\"emailDVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.forcaRelacao).to.eql(pm.environment.get(\"forcaVar\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadoPedidoLigacao\": \"{{estadoVar}}\",\r\n  \"id\": \"{{idVar}}\",\r\n  \"emailOrigem\": \"{{emailOVar}}\",\r\n  \"emailDestino\": \"{{emailDVar}}\",\r\n  \"forcaRelacao\": \"{{forcaVar}}\",\r\n  \"tags\": [\r\n    \"testPost\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/PesquisarUtilizadores/rosita2@gmail.com/criarPedidoLigacao",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"PesquisarUtilizadores",
+								"rosita2@gmail.com",
+								"criarPedidoLigacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Found user returns status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Found request with correct email\", function () {\r",
+									"    pm.expect(responseJson.email).to.eql(pm.environment.get(\"rosita2@gmail.com\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no user with this email\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"email\": \"rosita2@gmail.com\",\r\n  \"cidadePais\": \"Ribadouro\",\r\n  \"nome\": \"Rosa\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/PesquisarUtilizadores/rosita2@gmail.com",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"PesquisarUtilizadores",
+								"rosita2@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Found relation returns status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Relation has correct id\", function () {\r",
+									"    pm.expect(responseJson.id).to.eql(pm.environment.get(\"PesquisaPost\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/PesquisarUtilizadores/PesquisaPost",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"PesquisarUtilizadores",
+								"PesquisaPost"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Relação (REVER)",
+			"item": [
+				{
+					"name": "POST",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"const id = pm.variables.replaceIn(\"{{$relacaoId}}\");\r",
+									"\r",
+									"console.log(\"Id: \" + id);\r",
+									"\r",
+									"pm.environment.set(\"idVar\", id);\r",
+									"\r",
+									"pm.environment.set(\"origemVar\", \"Jose\");\r",
+									"\r",
+									"pm.environment.set(\"destinoVar\", \"Rosa\");\r",
+									"\r",
+									"pm.environment.set(\"forcaVar\", 8);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.relacaoId).to.eql(pm.environment.get(\"idVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.utilizadorOrigem).to.eql(pm.environment.get(\"origemVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.utilizadorDestino).to.eql(pm.environment.get(\"destinoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.forcaLigacao).to.eql(pm.environment.get(\"forcaVar\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"relacaoId\": \"{{idVar}}\",\r\n    \"utilizadorOrigem\": \"{{origemVar}}\",\r\n    \"utilizadorDestino\": \"{{destinoVar}}\",\r\n    \"forcaLigacao\": \"{{forcaVar}}\",\r\n    \"tagsRelacao\": [\r\n        \"Francesa\",\r\n        \"Pobre da Zona\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Relacao",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Relacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no categories\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/Relacao",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"Relacao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RedeSocialPerspetivaUser (nao testado)",
+			"item": [
+				{
+					"name": "GET-> Email / Nivel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no users\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/rosita2@gmail.com/2",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"rosita2@gmail.com",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AprovarPedidoIntroducao (nao testado)",
+			"item": [
+				{
+					"name": "POST -> Pedido aceite",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"idVar\", \"PedidoIntroPost\");\r",
+									"\r",
+									"pm.environment.set(\"descVar\", \"descPost\");\r",
+									"\r",
+									"pm.environment.set(\"origemVar\", \"rosita2@gmail.com\");\r",
+									"\r",
+									"pm.environment.set(\"intermedioVar\", \"fa@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"destinoVar\", \"fe@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"estadoVar\", \"Aceite\");\r",
+									"\r",
+									"pm.environment.set(\"forcaVar\", 1);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct id\", function () {\r",
+									"    pm.expect(responseJson.id).to.eql(pm.environment.get(\"idVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.descricao).to.eql(pm.environment.get(\"descVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.emailOrigem).to.eql(pm.environment.get(\"origemVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.emailIntermedio).to.eql(pm.environment.get(\"intermedioVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.emailDestino).to.eql(pm.environment.get(\"destinoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.estadoPedidoIntroducao).to.eql(pm.environment.get(\"estadoVar\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{idVar}}\",\r\n    \"descricao\": \"{{descVar}}\",\r\n    \"emailOrigem\": \"{{origemVar}}\",\r\n    \"emailIntermedio\": \"{{intermedioVar}}\",\r\n    \"emailDestino\": \"{{destinoVar}}\",\r\n    \"estadoPedidoIntroducao\": \"{{estadoVar}}\",\r\n    \"forca\": \"{{forcaVar}}\",\r\n    \"tags\": [\r\n        \"Francesa\",\r\n        \"Pobre da Zona\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/AprovarPedidoIntroducao/rosita2@gmail.com/PedidoIntroPost/Accept",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"AprovarPedidoIntroducao",
+								"rosita2@gmail.com",
+								"PedidoIntroPost",
+								"Accept"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST-> Pedido recusado",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"idVar\", \"PedidoIntroPost\");\r",
+									"\r",
+									"pm.environment.set(\"descVar\", \"descPost\");\r",
+									"\r",
+									"pm.environment.set(\"origemVar\", \"rosita2@gmail.com\");\r",
+									"\r",
+									"pm.environment.set(\"intermedioVar\", \"fa@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"destinoVar\", \"fe@isep.ipp.pt\");\r",
+									"\r",
+									"pm.environment.set(\"estadoVar\", \"Recusada\");\r",
+									"\r",
+									"pm.environment.set(\"forcaVar\", 1);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct id\", function () {\r",
+									"    pm.expect(responseJson.id).to.eql(pm.environment.get(\"idVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.descricao).to.eql(pm.environment.get(\"descVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.emailOrigem).to.eql(pm.environment.get(\"origemVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct phone number\", function () {\r",
+									"    pm.expect(responseJson.emailIntermedio).to.eql(pm.environment.get(\"intermedioVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct name\", function () {\r",
+									"    pm.expect(responseJson.emailDestino).to.eql(pm.environment.get(\"destinoVar\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body returns the correct description\", function () {\r",
+									"    pm.expect(responseJson.estadoPedidoIntroducao).to.eql(pm.environment.get(\"estadoVar\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{idVar}}\",\r\n    \"descricao\": \"{{descVar}}\",\r\n    \"emailOrigem\": \"{{origemVar}}\",\r\n    \"emailIntermedio\": \"{{intermedioVar}}\",\r\n    \"emailDestino\": \"{{destinoVar}}\",\r\n    \"estadoPedidoIntroducao\": \"{{estadoVar}}\",\r\n    \"forca\": \"{{forcaVar}}\",\r\n    \"tags\": [\r\n        \"Francesa\",\r\n        \"Pobre da Zona\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/AprovarPedidoIntroducao/rosita2@gmail.com/PedidoIntroPost2/Decline",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"AprovarPedidoIntroducao",
+								"rosita2@gmail.com",
+								"PedidoIntroPost2",
+								"Decline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -> All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no users\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/AprovarPedidoIntroducao/Pedidos",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"AprovarPedidoIntroducao",
+								"Pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET-> Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"There are no users\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://10.9.20.237:10237/api/AprovarPedidoIntroducao/rosita2@gmail.com/Pedidos",
+							"protocol": "https",
+							"host": [
+								"10",
+								"9",
+								"20",
+								"237"
+							],
+							"port": "10237",
+							"path": [
+								"api",
+								"AprovarPedidoIntroducao",
+								"rosita2@gmail.com",
+								"Pedidos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

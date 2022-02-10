@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;}
+body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }
+@font-face {
+  font-family: "Good Times";
+  src: local("Good Times"), url(./assets/good-times.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url(./assets/roboto.ttf) format("truetype");
+}
+
+.green-snackbar {
+  background: rgb(67, 164, 209);
+  color: white;
+}
+
+.green-snackbar button {
+  color: white;
+  border: none;
+}
+
+.green-snackbar button:hover {
+  background:rgba(43, 107, 136, 0.5);
+  color: white !important;
+}
+
+.red-snackbar {
+  background: rgb(223, 46, 46);
+  color: rgb(255, 255, 255);
+}
+
+.red-snackbar button {
+  color: white;
+  border: none;
+}
+
+.red-snackbar button:hover {
+  background:rgba(148, 31, 31, 0.5);
+  color: white !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

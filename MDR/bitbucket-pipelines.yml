@@ -1,0 +1,37 @@
+image: mcr.microsoft.com/dotnet/sdk:5.0
+
+pipelines:
+  default:
+    - step:
+        name: Build and Test
+        caches:
+          - dotnetcore
+        script:
+          - REPORTS_PATH=./testreports/build_${BITBUCKET_BUILD_NUMBER}
+          - dotnet restore API
+          - dotnet build --no-restore --configuration Rele API
+          - dotnet test --no-build --configuration Release API --test-adapter-path:. --  logger:"junit;LogFilePath=$REPORTS_PATH/API/junit.xml"
+          - dotnet restore TESTES
+          - dotnet build --no-restore --configuration Release TESTES
+          - dotnet test --no-build --configuration Release TESTES  --test-adapter-path:. --  logger:"junit;LogFilePath=$REPORTS_PATH/TESTES/junit.xml"
+ 
+    - step:
+        name: Lint the code 
+        caches:
+           - dotnetcore
+        script:
+           - dotnet new tool-manifest
+           - dotnet tool install JetBrains.ReSharper.GlobalTools
+           - dotnet tool restore
+#    - step:
+#            name: Deploy to Heroku
+#            script:
+#              - heroku buildpacks:set jincod/dotnetcore
+#              - dotnet publish -o /publish
+#              - git archive --format=tar.gz master publish -o api.tar.gz
+#              - pipe: atlassian/heroku-deploy:1.2.1
+#                variables:
+#                  HEROKU_API_KEY: $HEROKU_API_KEY
+#                  HEROKU_APP_NAME: $HEROKU_APP_NAME
+#                  ZIP_FILE: "api.tar.gz"
+#                  WAIT: "true"

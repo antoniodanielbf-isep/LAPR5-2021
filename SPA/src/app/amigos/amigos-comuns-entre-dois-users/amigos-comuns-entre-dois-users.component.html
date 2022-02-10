@@ -1,0 +1,42 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Grafo de Amigos comuns entre 2 Utilizadores</title>
+  <link rel="stylesheet" href="amigos-comuns-entre-dois-users.component.css">
+</head>
+
+<body>
+<div class="content">
+
+  <div class="title" id='title'>
+    Visualizar Amigos Comuns
+  </div>
+
+  <div class="wrapper">
+    <form [formGroup]="AmigosComunsForm">
+      <div class="wrapper_items">
+        <mat-form-field appearance="fill">
+          <mat-label>Introduza o email</mat-label>
+          <input type="text" matInput formControlName="email" required>
+        </mat-form-field>
+
+        <div class="buscar">
+          <button type="button" class="mat-button" (click)="buscarAmigosComuns()"><b>Buscar amigos em comum</b></button>
+        </div>
+      </div>
+    </form>
+    <div class="email">
+      <div *ngIf="amigosComunsEncontrados">
+
+        <div *ngFor="let amigoComum of listaAmigosComuns">
+          <b>Email:</b> {{amigoComum}}<br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submitBtn">
+    <button type="button" class="mat-button" (click)="irParaInicio()"><b>Página Inicial</b></button>
+  </div>
+
+</div>
+</body>

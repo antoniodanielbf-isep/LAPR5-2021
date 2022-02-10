@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../back3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 750px;
+  width: 1300px;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+}
+
+.wrapper .left{
+  width: 600px;
+  background: linear-gradient(to right, rgba(206, 31, 31, 0.95), rgba(205, 92, 92, 0.9));
+  padding: 30px 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.wrapper .left img{
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.wrapper .left button{
+  margin-top: 15px;
+  margin-left: -1px;
+
+}
+
+.wrapper .left h4{
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.wrapper .left p{
+  font-size: 20px;
+  height: 45px;
+}
+
+.wrapper .right{
+  width: 1300px;
+  background:linear-gradient(to right, rgba(205, 92, 92, 0.9), rgba(126, 125, 125, 0.75));
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 30px 25px;
+}
+
+.wrapper .right .info,
+.wrapper .right .projects,
+.wrapper .right .socials{
+  margin-bottom: 25px;
+
+}
+
+.wrapper .right .info h3,
+.wrapper .right .projects h3,
+.wrapper .right .socials h3{
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #e0e0e0;
+  color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+}
+
+.wrapper .right .info_data,
+.wrapper .right .projects_data,
+.wrapper .right .social_data{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .right .info_data,
+.wrapper .right .projects_data .data,
+.wrapper .right .social_data .social_media{
+  width: 100%;
+
+}
+
+.wrapper .right .info_data h4,
+.wrapper .right .projects_data .data h4{
+  color: #353c4e;
+  margin-bottom: 8px;
+
+}
+
+.wrapper .right .info_data p,
+.wrapper .right .projects_data .data p{
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffffff;
+
+}
+
+.wrapper .social_media ul{
+  display: flex;
+
+}
+
+.wrapper .social_media ul li{
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.89), rgba(205, 92, 92, 0.8));
+  margin-right: 15px;
+  margin-left: 38px;
+  border-radius: 5px;
+  line-height: 45px;
+  text-align: center;
+
+}
+
+.wrapper .social_media ul li a{
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  font-size: 45px;
+
+}
+
+.bottom{
+  position: absolute;
+  bottom: 200px;
+  left: 900px;
+  height: 150px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.bottom .conf_btn{
+  position: relative;
+  left: -180px;
+  bottom: -120px;
+}
+
+button{
+  padding:2vh 2vw;
+  margin-left: 17px;
+  margin-bottom: 5px;
+  border-color: indianred;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  border-radius: 30px;
+}
+
+input[type=text] {
+  margin: 2px;
+}
+
+.topper{
+  position: absolute;
+  top:10%;
+  left: 17%;
+  transform: translate(-50%,-50%);
+  height: 150px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../back3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+* {
+  font-family: "Century Gothic";
+  color: black;
+  font-weight: bold;
+}
+
+.title {
+  position: relative;
+  width: 1920px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 6vmin;
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.47) 0%, rgba(199, 53, 53, 0.75) 50%, #aa38ba 100%);
+  font-weight: normal;
+  cursor: default;
+}
+
+.submitBtn {
+  position: absolute;
+  margin-left: 6%;
+  margin-top: 2.5%;
+
+}
+
+.content .submitBtn button {
+  padding: 2vh 2vw;
+  border-color: indianred;
+  cursor: pointer;
+  overflow: hidden;
+  color: black;
+  border-radius: 30px;
+  box-shadow: 0 0 0 0 rgba(113, 81, 222, 0.5), 0 0 0 0 rgba(198, 47, 56, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content .submitBtn button::after {
+  content: "";
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: -135px;
+  left: -18px;
+  background-color: lightcoral;
+  background-image: linear-gradient(225deg, rgba(238, 156, 239, 0.96) 0%, #e35757 50%, #aa38ba 100%);
+  z-index: -1;
+  transition: transform 0.5s ease;
+}
+
+.content .submitBtn button:hover {
+  transform: translate(0, -6px);
+  box-shadow: 10px -10px 25px 0 rgba(125, 125, 125, 0.5), -10px 10px 25px 0 rgba(215, 54, 65, 0.56);
+}
+
+.content .submitBtn button:hover::after {
+  transform: rotate(150deg);
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 750px;
+  width: 1300px;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 161, 0.74);
+  background-image: linear-gradient(225deg, rgba(143, 141, 143, 0.3) 0%, rgba(199, 53, 53, 0.3) 50%, rgba(170, 56, 186, 0.3) 100%);
+  text-align: center;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.wrapper .wrapper_items {
+  border-style: dashed;
+  border-color: rgba(125, 125, 125, 0.5);
+  position: relative;
+  text-align: center;
+  align-items: center;
+  width: 600px;
+  display: grid;
+  margin-left: 330px;
+  margin-bottom: 110px;
+  box-shadow: 0 1px 20px 0 rgba(196, 50, 50, 0.77);
+  border-radius: 20px;
+
+}
+
+.wrapper .wrapper_items button {
+  margin-top: 150px;
+
+}
+
+.content .wrapper .wrapper_items .buscar button {
+  border-radius: 10px;
+  border-color: indianred;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  padding: 25px 30px;
+}
+
+.content .wrapper .wrapper_items .buscar button:hover {
+  box-shadow: 10px -10px 25px 0 rgba(182, 90, 211, 0.45), -10px 10px 25px 0 rgba(218, 28, 40, 0.45);
+}
+
+.email {
+  position: absolute;
+  top: 33%;
+  left: 40%;
+}
