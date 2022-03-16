@@ -28,7 +28,7 @@ describe('login', ()=>{
     cy.wait(2000)
     cy.get('#botaoPost').click()
 
-    cy.get('#botaoCriarPost').click()
+    cy.get('#botaoCriarPost').click({force:true})
 
     cy.go('forward')
     cy.location('pathname').should('include','/criar-post')
@@ -37,10 +37,6 @@ describe('login', ()=>{
     cy.get('#tagsPost').type('teste, testado, fixe')
 
     cy.get('#botaoCriarPost').click()
-
-    cy.get('#botaoInicio').click()
-    cy.go('forward')
-    cy.location('pathname').should('include','/inicio')
   })
 
 })

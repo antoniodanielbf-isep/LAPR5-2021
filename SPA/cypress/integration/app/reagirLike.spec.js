@@ -26,7 +26,7 @@ describe('comentarPost', ()=>{
 
   it('comentarPostLike',()=>{
     cy.get('#botaoPost').click()
-    cy.get('#botaoComentarPost').click()
+    cy.get('#botaoComentarPost').click({force:true})
 
     cy.go('forward')
     cy.location('pathname').should('include','/verFeed')
@@ -37,7 +37,7 @@ describe('comentarPost', ()=>{
 
     cy.get('#botaoPostarReacao').click()
 
-    cy.get('#botaoLike').click()
+    cy.get('#botaoLike').click({force:true})
     cy.wait(2000)
   })
 
